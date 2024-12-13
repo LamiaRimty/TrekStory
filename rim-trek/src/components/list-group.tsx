@@ -1,8 +1,9 @@
-import { MouseEvent } from "react";
+import { useState } from "react";
 
 //capitalising 1st letter each word Pascal convention
 
 function ListofGroup() {
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   let items = [
     "Netherlands",
     "Belgium",
@@ -12,9 +13,6 @@ function ListofGroup() {
     "Italy",
   ];
   //items = [];
-  function handleClick(event: MouseEvent) {
-    console.log(event);
-  }
 
   return (
     <>
@@ -22,7 +20,17 @@ function ListofGroup() {
       {items.length === 0 && <p>Countries not found!</p>}
       <ul className="list-group">
         {items.map((item, index) => (
-          <li className="list-group-item" key={item} onClick={handleClick}>
+          <li
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
+            key={item}
+            onClick={() => {
+              setSelectedIndex(index);
+            }}
+          >
             {item}
           </li>
         ))}
