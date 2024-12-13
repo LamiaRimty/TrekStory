@@ -1,7 +1,7 @@
 //capitalising 1st letter each word Pascal convention
 
 function ListofGroup() {
-  const itemlands = [
+  let items = [
     "Netherlands",
     "Belgium",
     "Luxembourg",
@@ -9,12 +9,21 @@ function ListofGroup() {
     "Austria",
     "Italy",
   ];
+  //items = [];
+
   return (
     <>
       <h1>List of my Trek countries </h1>
+      {items.length === 0 && <p>Countries not found!</p>}
       <ul className="list-group">
-        {itemlands.map((itemland) => (
-          <li key={itemland}>{itemland}</li>
+        {items.map((item) => (
+          <li
+            className="list-group-item"
+            key={item}
+            onClick={() => console.log("Clicked")}
+          >
+            {item}
+          </li>
         ))}
       </ul>
     </>
