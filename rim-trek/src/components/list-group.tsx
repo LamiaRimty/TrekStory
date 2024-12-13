@@ -1,17 +1,23 @@
 //capitalising 1st letter each word Pascal convention
 
 function ListofGroup() {
+  const itemlands = [
+    "Netherlands",
+    "Belgium",
+    "Luxembourg",
+    "Czech",
+    "Austria",
+    "Italy",
+  ];
   return (
-    
-      <h1>Lists of Trekking</h1>
+    <>
+      <h1>List of my Trek countries </h1>
       <ul className="list-group">
-        <li className="list-group-item">An item</li>
-        <li className="list-group-item">A second item</li>
-        <li className="list-group-item">A third item</li>
-        <li className="list-group-item">A fourth item</li>
-        <li className="list-group-item">And a fifth one</li>
+        {itemlands.map((itemland) => (
+          <li key={itemland}>{itemland}</li>
+        ))}
       </ul>
-    
+    </>
   );
 }
 export default ListofGroup;
