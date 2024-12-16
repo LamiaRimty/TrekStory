@@ -2,21 +2,19 @@ import { useState } from "react";
 
 //capitalising 1st letter each word Pascal convention
 
-function ListofGroup() {
+interface props {
+  items: string[];
+  heading: string;
+}
+
+function ListofGroup({ items, heading }: props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
-  let items = [
-    "Netherlands",
-    "Belgium",
-    "Luxembourg",
-    "Czech",
-    "Austria",
-    "Italy",
-  ];
+
   //items = [];
 
   return (
     <>
-      <h1>List of my Trek countries </h1>
+      <h1>{heading}</h1>
       {items.length === 0 && <p>Countries not found!</p>}
       <ul className="list-group">
         {items.map((item, index) => (
