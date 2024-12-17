@@ -1,3 +1,4 @@
+import Alert from "./components/alert";
 import ListofGroup from "./components/list-group";
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
         heading="Trek countries"
         onSelectedItem={handleSelectedItem}
       />
+      <Alert>
+        Hello <strong>World</strong>{" "}
+      </Alert>
     </div>
   );
 }
