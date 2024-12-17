@@ -5,9 +5,10 @@ import { useState } from "react";
 interface props {
   items: string[];
   heading: string;
+  onSelectedItem: (item: string) => void;
 }
 
-function ListofGroup({ items, heading }: props) {
+function ListofGroup({ items, heading, onSelectedItem }: props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   //items = [];
@@ -27,6 +28,7 @@ function ListofGroup({ items, heading }: props) {
             key={item}
             onClick={() => {
               setSelectedIndex(index);
+              onSelectedItem(item);
             }}
           >
             {item}

@@ -9,9 +9,17 @@ function App() {
     "Austria",
     "Italy",
   ];
+
+  const handleSelectedItem = (item: string) => {
+    console.log("Selected contry is: ", item);
+  };
   return (
     <div>
-      <ListofGroup items={items} heading="Trek countries" />
+      <ListofGroup
+        items={items}
+        heading="Trek countries"
+        onSelectedItem={handleSelectedItem}
+      />
     </div>
   );
 }
