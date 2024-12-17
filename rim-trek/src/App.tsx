@@ -1,3 +1,4 @@
+import Button from "./components/button";
 import Alert from "./components/alert";
 import ListofGroup from "./components/list-group";
 
@@ -24,6 +25,9 @@ function App() {
       <Alert>
         Hello <strong>World</strong>{" "}
       </Alert>
+      <Button color="success" onClick={() => console.log("Clicked!")}>
+        Coutry
+      </Button>
     </div>
   );
 }
