@@ -1,15 +1,18 @@
 import { useState } from "react";
+import "./ListofGroup.css";
+import styled from "styled-components";
 
 //capitalising 1st letter each word Pascal convention
 
 interface props {
+  //using interface we can define shape or interface of an obj
   items: string[];
   heading: string;
   onSelectedItem: (item: string) => void;
 }
 
 function ListofGroup({ items, heading, onSelectedItem }: props) {
-  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [selectedIndex, setSelectedIndex] = useState(-1); //state hook should change selected index over time
 
   //items = [];
 
@@ -27,7 +30,7 @@ function ListofGroup({ items, heading, onSelectedItem }: props) {
             }
             key={item}
             onClick={() => {
-              setSelectedIndex(index);
+              setSelectedIndex(index); //should change selected index over time
               onSelectedItem(item);
             }}
           >
