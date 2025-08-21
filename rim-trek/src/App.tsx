@@ -1,7 +1,7 @@
 import Button from "./components/Button/Button";
 import Alert from "./components/alert";
 import ListofGroup from "./components/ListofGroup";
-import Like from "./components/Like/Like";
+import Like from "./components/Like";
 import { useState } from "react";
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
       <Button color="warning" onClick={() => setAlertVisible(true)}>
         Say Hello!
       </Button>
-      <Like />
+      <Like onClick={() => console.log("Clicked")} />
     </div>
   );
 }
