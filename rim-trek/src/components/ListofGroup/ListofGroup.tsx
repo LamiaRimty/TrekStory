@@ -3,6 +3,19 @@ import "./ListofGroup.css";
 import styled from "styled-components";
 
 //capitalising 1st letter each word Pascal convention
+//css in reacr comp
+const List = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
+
+interface ListItemProps {
+  active: boolean;
+}
+const ListItem = styled.li<ListItemProps>`
+  padding: 5x 0;
+  background: ${(props) => (props.active ? "green" : "none")};
+`;
 
 interface props {
   //using interface we can define shape or interface of an obj
@@ -12,7 +25,7 @@ interface props {
 }
 
 function ListofGroup({ items, heading, onSelectedItem }: props) {
-  const [selectedIndex, setSelectedIndex] = useState(-1); //state hook should change selected index over time
+  const [selectedIndex, setSelectedIndex] = useState(0); //state hook should change selected index over time
 
   //items = [];
 
@@ -20,14 +33,16 @@ function ListofGroup({ items, heading, onSelectedItem }: props) {
     <>
       <h1>{heading}</h1>
       {items.length === 0 && <p>Countries not found!</p>}
-      <ul className="list-group">
+      {/* <List className="list-group"> */}
+      <List>
         {items.map((item, index) => (
-          <li
-            className={
-              selectedIndex === index
-                ? "list-group-item active"
-                : "list-group-item"
-            }
+          <ListItem
+            active={index === selectedIndex}
+            // className={
+            //   selectedIndex === index
+            //     ? "list-group-item active"
+            //     : "list-group-item"
+            // }
             key={item}
             onClick={() => {
               setSelectedIndex(index); //should change selected index over time
@@ -35,9 +50,9 @@ function ListofGroup({ items, heading, onSelectedItem }: props) {
             }}
           >
             {item}
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </>
   );
 }
