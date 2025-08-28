@@ -1,44 +1,17 @@
-import Button from "./components/Button/Button";
-import Alert from "./components/alert";
-import ListofGroup from "./components/ListofGroup";
-import Like from "./components/Like";
 import { useState } from "react";
-
 function App() {
-  const [alertVisible, setAlertVisible] = useState(false);
-
-  let items = [
-    "Netherlands",
-    "Belgium",
-    "Luxembourg",
-    "Bulgaria",
-    "Czech",
-    "Austria",
-    "Italy",
-    "Spain",
-  ];
-
-  const handleSelectedItem = (item: string) => {
-    //printing the name of the selected countries
-    console.log("Selected contry is: ", item);
+  const [tags, setTags] = useState(["happy", "cheerful"]);
+  const handleClick = () => {
+    setTags([...tags]); //add
+    setTags(tags.filter((tags) => tags! === "happy")); //remove
+    setTags(tags.map((tag) => (tag === "happy" ? "happiness" : tag)));
+    console.log("Updated Tags ", tags);
   };
+
   return (
     <div>
-      <ListofGroup
-        items={items}
-        heading="Trek countries"
-        onSelectedItem={handleSelectedItem}
-      />
-      {alertVisible && (
-        <Alert onClose={() => setAlertVisible(false)}>
-          Hello <strong>World</strong>
-        </Alert>
-      )}
-
-      <Button color="warning" onClick={() => setAlertVisible(true)}>
-        Say Hello!
-      </Button>
-      <Like onClick={() => console.log("Clicked")} />
+      {tags.join(" , ")}
+      <button onClick={handleClick}>Update Tags </button>
     </div>
   );
 }
