@@ -1,29 +1,28 @@
-import { produce } from "immer";
 import { useState } from "react";
+
 function App() {
-  const [bugs, setBugs] = useState([
-    { id: 1, title: "Bug 1", fixed: false },
-    { id: 2, title: "Bug 2", fixed: false },
-  ]);
+  const [game, setGame] = useState({
+    id: 1,
+    player: {
+      name: "Rimty",
+    },
+  });
   const handleClick = () => {
-    // setBugs(bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : bug)));
-    // console.log(bugs);
-    setBugs(
-      produce((draft) => {
-        const bug = draft.find((bug) => bug.id === 1);
-        if (bug) bug.fixed = true;
-      })
-    );
+    setGame({
+      ...game,
+      player: {
+        ...game.player,
+        name: "Monmoy",
+      },
+      address: "Delft",
+    });
   };
 
   return (
     <div>
-      {bugs.map((bug) => (
-        <p key={bug.id}>
-          {bug.title} {bug.fixed ? "Fixed" : "New"}
-        </p>
-      ))}
-      <button onClick={handleClick}>Update Bugs </button>
+      <h3>Player Name:{game.player.name}</h3>
+      {game.address && <h3>Player Address:{game.address}</h3>}
+      <button onClick={handleClick}>Update Player Name</button>
     </div>
   );
 }
